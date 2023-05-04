@@ -10,8 +10,8 @@ export const MainView = () => {
       useEffect(() => {
           fetch("https://ortega-myflix.herokuapp.com/movies")
               .then(response => response.json())
-              .then(data => {
-                  console.log("movies from api:", data);
+              .then(movies => {
+                  console.log("movies from api:", movies);
               });
       }, []);
 
