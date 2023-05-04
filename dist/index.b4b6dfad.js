@@ -27164,10 +27164,11 @@ const MainView = ()=>{
             const moviesFromApi = movies.map((movie)=>{
                 return {
                     id: movie._id,
-                    Title: movie.Title,
-                    Image: movie.ImagePath,
-                    Genre: movie.Genre.Name,
-                    Director: movie.Director.Name
+                    title: movie.Title,
+                    image: movie.ImagePath,
+                    genre: movie.Genre.Name,
+                    director: movie.Director.Name,
+                    description: movie.Description
                 };
             });
             setMovies(moviesFromApi);
@@ -27178,14 +27179,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 30,
+        lineNumber: 31,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 38,
+        lineNumber: 39,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27196,12 +27197,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 44,
+                lineNumber: 45,
                 columnNumber: 17
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 42,
+        lineNumber: 43,
         columnNumber: 9
     }, undefined);
 };
@@ -27246,7 +27247,7 @@ MovieCard.propTypes = {
         Title: (0, _propTypesDefault.default).string.isRequired,
         Image: (0, _propTypesDefault.default).string.isRequired,
         Genre: (0, _propTypesDefault.default).string.isRequired,
-        description: (0, _propTypesDefault.default).string,
+        Description: (0, _propTypesDefault.default).string,
         Director: (0, _propTypesDefault.default).string.isRequired,
         actors: (0, _propTypesDefault.default).string
     }).isRequired,
