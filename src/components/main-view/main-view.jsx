@@ -8,7 +8,7 @@ export const MainView = () => {
     const [selectedMovie, setSelectedMovie] = useState(null);
 
       useEffect(() => {
-          fetch("")
+          fetch("https://ortega-myflix.herokuapp.com/movies")
               .then(response => response.json())
               .then(data => {
                   console.log("movies from api:", data);
