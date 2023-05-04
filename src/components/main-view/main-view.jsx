@@ -11,7 +11,17 @@ export const MainView = () => {
           fetch("https://ortega-myflix.herokuapp.com/movies")
               .then(response => response.json())
               .then(movies => {
-                  console.log("movies from api:", movies);
+                  const moviesFromApi = movies.map(movie => {
+                      return {
+                          id: movie._id,
+                          title: movie.Title,
+                          image: movie.ImagePath,
+                          genre: movie.Genre,
+                          director: movie.Director.Name,
+                      };
+                  });
+
+                  setMovies(moviesFromApi);
               });
       }, []);
 

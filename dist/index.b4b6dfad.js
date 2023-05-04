@@ -27161,7 +27161,16 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://ortega-myflix.herokuapp.com/movies").then((response)=>response.json()).then((movies)=>{
-            console.log("movies from api:", movies);
+            const moviesFromApi = movies.map((movie)=>{
+                return {
+                    id: movie._id,
+                    title: movie.Title,
+                    image: movie.ImagePath,
+                    genre: movie.Genre,
+                    director: movie.Director.Name
+                };
+            });
+            setMovies(moviesFromApi);
         });
     }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27169,14 +27178,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 20,
+        lineNumber: 30,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 28,
+        lineNumber: 38,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27187,12 +27196,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 34,
+                lineNumber: 44,
                 columnNumber: 17
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 32,
+        lineNumber: 42,
         columnNumber: 9
     }, undefined);
 };
@@ -27234,10 +27243,10 @@ const MovieCard = ({ movie , onMovieClick  })=>{
 _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string,
+        title: (0, _propTypesDefault.default).string.isRequired,
         image: (0, _propTypesDefault.default).string.isRequired,
         genre: (0, _propTypesDefault.default).string.isRequired,
-        description: (0, _propTypesDefault.default).string.isRequired,
+        description: (0, _propTypesDefault.default).string,
         director: (0, _propTypesDefault.default).string.isRequired,
         actors: (0, _propTypesDefault.default).string
     }).isRequired,
