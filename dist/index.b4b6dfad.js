@@ -27164,10 +27164,10 @@ const MainView = ()=>{
             const moviesFromApi = movies.map((movie)=>{
                 return {
                     id: movie._id,
-                    title: movie.Title,
-                    image: movie.ImagePath,
-                    genre: movie.Genre,
-                    director: movie.Director.Name
+                    title: movie.title,
+                    image: movie.imagePath,
+                    genre: movie.genre,
+                    director: movie.director.Name
                 };
             });
             setMovies(moviesFromApi);
@@ -28186,7 +28186,7 @@ const MovieView = ({ movie , onBackClick  })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image
+                    src: movie.imagePath
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
