@@ -41,6 +41,13 @@ export const MainView = () => {
 
     return (
         <div>
+            <button
+                onClick={() => {
+                    setUser(null);
+                }}
+            >
+                Logout
+            </button>
             {movies.map(movie => (
                 <MovieCard
                     key={movie.id}
