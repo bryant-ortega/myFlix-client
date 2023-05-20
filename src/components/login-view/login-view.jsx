@@ -47,7 +47,7 @@ export const LoginView = ({ onLoggedIn }) => {
                     minlength="3"
                     maxlength="15"
                     required
-                    minLength="7"
+                    minLength="3"
                 />
             </label>
             <label>

@@ -28411,7 +28411,7 @@ const LoginView = ({ onLoggedIn  })=>{
                         minlength: "3",
                         maxlength: "15",
                         required: true,
-                        minLength: "7"
+                        minLength: "3"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
                         lineNumber: 43,
