@@ -28408,8 +28408,7 @@ const LoginView = ({ onLoggedIn  })=>{
                         type: "text",
                         value: username,
                         onChange: (e)=>setUsername(e.target.value),
-                        minlength: "3",
-                        maxlength: "15",
+                        maxLength: "15",
                         required: true,
                         minLength: "3"
                     }, void 0, false, {
@@ -28434,13 +28433,13 @@ const LoginView = ({ onLoggedIn  })=>{
                         minLength: "7"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 55,
+                        lineNumber: 54,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 53,
+                lineNumber: 52,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28448,7 +28447,7 @@ const LoginView = ({ onLoggedIn  })=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 63,
+                lineNumber: 62,
                 columnNumber: 13
             }, undefined)
         ]
