@@ -12,6 +12,31 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
+useEffect(() => {
+    if (!token) {
+        return;
+    }
+
+    fetch("https://ortega-myflix.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+    })
+        .then(response => response.json())
+        .then(movies => {
+            const moviesFromApi = movies.map(movie => {
+                return {
+                    id: movie._id,
+                    title: movie.Title,
+                    image: movie.ImagePath,
+                    genre: movie.Genre.Name,
+                    director: movie.Director.Name,
+                    description: movie.Description,
+                };
+            });
+
+            setMovies(moviesFromApi);
+        });
+}, [token]);
+
     if (!user) {
         return (
             <>
@@ -27,30 +52,7 @@ export const MainView = () => {
         );
     }
 
-      useEffect(() => {
-        if (!token) {
-            return;
-        }
-
-          fetch("https://ortega-myflix.herokuapp.com/movies", {
-            headers: { Authorization: `Bearer ${token}` },
-          })
-              .then(response => response.json())
-              .then(movies => {
-                  const moviesFromApi = movies.map(movie => {
-                      return {
-                          id: movie._id,
-                          title: movie.Title,
-                          image: movie.ImagePath,
-                          genre: movie.Genre.Name,
-                          director: movie.Director.Name,
-                          description: movie.Description,
-                      };
-                  });
-
-                  setMovies(moviesFromApi);
-              });
-      }, [token]);
+      
 
     if (selectedMovie) {
         return (
