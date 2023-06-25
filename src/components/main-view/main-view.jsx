@@ -43,7 +43,7 @@ useEffect(() => {
 
         return (
             <Row className="justify-content-md-center">
-                {user === null ? (
+                {!user ? (
                     <Col md={5}>
                         <LoginView
                             onLoggedIn={(user, token) => {
