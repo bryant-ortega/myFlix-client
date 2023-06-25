@@ -66,7 +66,7 @@ useEffect(() => {
                 ) : (
                     <>
                         {movies.map(movie => (
-                            <Col className="mb-4" key={book.id} md={4}>
+                            <Col className="mb-4" key={movie.id} md={4}>
                                 <MovieCard
                                     key={movie.id}
                                     movie={movie}
