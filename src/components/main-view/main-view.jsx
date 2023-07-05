@@ -3,6 +3,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -44,6 +46,19 @@ useEffect(() => {
 
         return (
             <BrowserRouter>
+                <Row>
+                    <Col>
+                        <NavigationBar
+                            user={user}
+                            token={token}
+                            onLoggedOut={() => {
+                                setUser(null);
+                                setToken(null);
+                                localStorage.clear();
+                            }}
+                        />
+                    </Col>
+                </Row>
                 <Row className="justify-content-md-center">
                     <Routes>
                         <Route
@@ -80,7 +95,7 @@ useEffect(() => {
                                 </>
                             }
                         />
-                        
+
                         <Route
                             path="/movies/:movieId"
                             element={
@@ -106,34 +121,38 @@ useEffect(() => {
                                     )}
                                 </>
                             }
-                           />
+                        />
 
                         <Route
-                        path="/"
-                        element={
-                          <>
-                          {!user ? ( 
-                              <Navigate to="/login" replace />
-                          ) : movies.length === 0 ? (
-                              <Col>The list is empty!</Col>
-                          ) : (
-                              <>
-                              {movies.map(movie => (
-                                  <Col className="mb-4" key={movie.id} md={4}>
-                                      <MovieCard movie={movie} />
-                                  </Col>
-                                      ))}
-                                      </>
-                                  )}
-                                  </>
-                                }
-                                />
-                        </Routes>
+                            path="/"
+                            element={
+                                <>
+                                    {!user ? (
+                                        <Navigate to="/login" replace />
+                                    ) : movies.length === 0 ? (
+                                        <Col>The list is empty!</Col>
+                                    ) : (
+                                        <>
+                                            {movies.map(movie => (
+                                                <Col
+                                                    className="mb-4"
+                                                    key={movie.id}
+                                                    md={4}
+                                                >
+                                                    <MovieCard movie={movie} />
+                                                </Col>
+                                            ))}
+                                        </>
+                                    )}
+                                </>
+                            }
+                        />
+                    </Routes>
 
-                      {user && (
+                    {user && (
                         <Col md={1}>
                             <Button
-                              variant="secondary"
+                                variant="secondary"
                                 onClick={() => {
                                     setUser(null);
                                     setToken(null);
@@ -143,7 +162,7 @@ useEffect(() => {
                                 Logout
                             </Button>
                         </Col>
-                        )}
+                    )}
                 </Row>
             </BrowserRouter>
         );
