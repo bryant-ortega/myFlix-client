@@ -5,10 +5,8 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 
@@ -19,7 +17,12 @@ export const MainView = () => {
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
 
-    let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m._id));
+   
+    const onLogout = () => {
+        // setUser(null);
+        // setToken(null);
+        localStorage.clear();
+    };
 
 useEffect(() => {
     if (!token) {
@@ -99,6 +102,27 @@ useEffect(() => {
                         />
 
                         <Route
+                            path="/users"
+                            element={
+                                <>
+                                    {!user ? (
+                                        <Navigate to="/login" replace />
+                                    ) : (
+                                        <Col>
+                                            <ProfileView
+                                                user={user}
+                                                token={token}
+                                                setUser={setUser}
+                                                movies={movies}
+                                                onLogout={onLogout}
+                                            />
+                                        </Col>
+                                    )}
+                                </>
+                            }
+                        />
+
+                        <Route
                             path="/movies/:movieId"
                             element={
                                 <>
@@ -150,21 +174,6 @@ useEffect(() => {
                             }
                         />
                     </Routes>
-
-                    {user && (
-                        <Col md={1}>
-                            <Button
-                                variant="secondary"
-                                onClick={() => {
-                                    setUser(null);
-                                    setToken(null);
-                                    localStorage.clear();
-                                }}
-                            >
-                                Logout
-                            </Button>
-                        </Col>
-                    )}
                 </Row>
             </BrowserRouter>
         );

@@ -1,9 +1,11 @@
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
+  
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="primary" variant="dark" expand="lg">
+            <Container>
                 <Navbar.Brand as={Link} to="/">
                     MyFlix
                 </Navbar.Brand>
@@ -13,7 +15,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                         {!user && (
                             <>
                                 <Nav.Link as={Link} to="/login">
-                                    Login   
+                                    Login
                                 </Nav.Link>
                                 <Nav.Link as={Link} to="/signup">
                                     Signup
@@ -26,7 +28,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                                     Movies
                                 </Nav.Link>
                                 <Nav.Link as={Link} to="/users">
-                                    Profile
+                                    My Profile
                                 </Nav.Link>
                                 <Nav.Link onClick={onLoggedOut}>
                                     Logout
@@ -35,6 +37,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                         )}
                     </Nav>
                 </Navbar.Collapse>
+            </Container>
         </Navbar>
     );
 };
