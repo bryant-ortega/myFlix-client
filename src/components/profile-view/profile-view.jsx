@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import "./profile-view.scss";
+import Container from "react-bootstrap/Container";
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
@@ -56,6 +57,8 @@ export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
             });
     };
 
+    console.log(favoriteMovies);
+
     const handleDeleteUser = () => {
         fetch(`https://ortega-myflix.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
@@ -72,66 +75,25 @@ export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
     };
 
     return (
-        <>
-            <h1>Profile</h1>
+        <Container>
             <Row>
+              <p></p>
+                <Col xs={12} sm={4}>
+                    <Card>
+                        <Card.Body>
+                            <UserInfo name={user.Username} email={user.Email} />
+                        </Card.Body>
+                    </Card>
+                </Col>
                 <Col>
-                    <div>Username: {user.Username}</div>
-                    <div>Email: {user.Email}</div>
+                    <Card>
+                        <Card.Body>
+                            {/* <UpdateUser handleSubmit={ handleSubmit } handleUpdate={ handleUpdate } /> */}
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
             <p></p>
-            <Row>
-                <h3>Update your profile information here.</h3>
-                <p></p>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formUsername">
-                        <Form.Label>Username:</Form.Label>
-                        <Form.Control
-                            type="text"
-                            value={username}
-                            onChange={e => setUsername(e.target.value)}
-                            required
-                            minLength="5"
-                        />
-                    </Form.Group>
-                    <p></p>
-                    <Form.Group controlId="formPassword">
-                        <Form.Label>Password:</Form.Label>
-                        <Form.Control
-                            type="password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                            required
-                            minLength="5"
-                        />
-                    </Form.Group>
-                    <p></p>
-                    <Form.Group controlId="formEmail">
-                        <Form.Label>Email:</Form.Label>
-                        <Form.Control
-                            type="email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            required
-                        />
-                    </Form.Group>
-                    <p></p>
-                    <Form.Group controlId="formBirthday">
-                        <Form.Label>Birthday:</Form.Label>
-                        <Form.Control
-                            type="date"
-                            value={birthday}
-                            onChange={e => setBirthday(e.target.value)}
-                            required
-                        />
-                    </Form.Group>
-                    <p></p>
-                    <Button variant="primary" type="submit">
-                        Save changes
-                    </Button>
-                </Form>
-            </Row>
             <Row>
                 <p></p>
                 <h3>Favorite movies:</h3>
@@ -141,6 +103,7 @@ export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
                     </Col>
                 ))}
             </Row>
-        </>
+            <Row></Row>
+        </Container>
     );
 };

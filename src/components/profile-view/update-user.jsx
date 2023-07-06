@@ -1,32 +1,61 @@
 import React from "react";
 
-function UpdateUser ({handleSubmit, handleUpdate}) {
-  return (
-    <form className="profile-form" onSubmit={(e) => handleSubmit(e)}>
-      <h2>Want to change some info?</h2>
-      <label>Username:</label>
-      <input
-        type="text"
-        name="Username"
-        defaultValue={user.Username}
-        onChange={e => handleUpdate(e)} />
-      <label>Password</label>
-      <input
-          type="password"
-          name="password"
-          defaultValue={user.Password}
-          onChange={e => handleUpdate(e)} />
 
-      <label>Email address</label>
-      <input
-        type="email"
-        name="email"
-        defaultValue={user.Email}
-        onChange={e => handleUpdate(e.target.value)} />
-      <button variant="primary" type="submit">
-        Update
-      </button>
-    </form>
+function UpdateUser ({handleSubmit, handleUpdate}) {
+
+
+  return (
+      <Form onSubmit={handleSubmit}>
+          <h4>Update your profile information.</h4>
+          <p></p>
+          <Form.Group controlId="formUsername">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                  type="text"
+                  name="Username"
+                  defaultValue={user.Username}
+                  onChange={e => handleUpdate(e)}
+                  // onChange={e => setUsername(e.target.value)}
+                  // required
+                  minLength="5"
+              />
+          </Form.Group>
+          <p></p>
+          <Form.Group controlId="formPassword">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control
+                  type="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                  minLength="5"
+              />
+          </Form.Group>
+          <p></p>
+          <Form.Group controlId="formEmail">
+              <Form.Label>Email:</Form.Label>
+              <Form.Control
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
+              />
+          </Form.Group>
+          <p></p>
+          <Form.Group controlId="formBirthday">
+              <Form.Label>Birthday:</Form.Label>
+              <Form.Control
+                  type="date"
+                  value={birthday}
+                  onChange={e => setBirthday(e.target.value)}
+                  required
+              />
+          </Form.Group>
+          <p></p>
+          <Button variant="primary" type="submit">
+              Save changes
+          </Button>
+      </Form>
   );
 };
 

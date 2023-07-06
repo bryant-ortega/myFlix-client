@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 
 function FavoriteMovies({ favoriteMovieList }) {
     return (
-        <div>
-            <h2>Favorite Movies</h2>
+        <Row>
+            <Col xs={2}>
+                <h2>Favorite Movies</h2>
+            </Col>
             {favoriteMovieList.map(movies => {
                 return (
                     <div key={movies.id}>
                         <img src={movies.ImagePath} />
                         <Link to={`/movies/${movies._id}`}>
-                          <h4>{movies.Title}</h4>
+                            <h4>{movies.Title}</h4>
                         </Link>
                         <button
                             variant="secondary"
@@ -21,7 +23,7 @@ function FavoriteMovies({ favoriteMovieList }) {
                     </div>
                 );
             })}
-        </div>
+        </Row>
     );
 }
 
