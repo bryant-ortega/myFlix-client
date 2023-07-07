@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 
 export const MovieCard = ({ movie }) => {
     return (
-        <Card className="h-100" card text-bg-dark>
+        <Card className="h-100 card text-bg-dark">
             <Card.Img variant="top" src={movie.image} />
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>

@@ -13,10 +13,9 @@ function UpdateUser ({handleSubmit, handleUpdate}) {
               <Form.Control
                   type="text"
                   name="Username"
-                  defaultValue={user.Username}
-                  onChange={e => handleUpdate(e)}
-                  // onChange={e => setUsername(e.target.value)}
-                  // required
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  required
                   minLength="5"
               />
           </Form.Group>
@@ -25,7 +24,6 @@ function UpdateUser ({handleSubmit, handleUpdate}) {
               <Form.Label>Password:</Form.Label>
               <Form.Control
                   type="password"
-                  value={password}
                   onChange={e => setPassword(e.target.value)}
                   required
                   minLength="5"
@@ -46,7 +44,7 @@ function UpdateUser ({handleSubmit, handleUpdate}) {
               <Form.Label>Birthday:</Form.Label>
               <Form.Control
                   type="date"
-                  value={birthday}
+                  value={new Date(user.Birthday).toISOString().slice(0, 10)}
                   onChange={e => setBirthday(e.target.value)}
                   required
               />
