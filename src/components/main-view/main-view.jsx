@@ -138,7 +138,7 @@ useEffect(() => {
                                         <Col
                                             md={8}
                                             style={{
-                                                border: "1px solid black",
+                                                border: "none",
                                             }}
                                         >
                                             <MovieView
