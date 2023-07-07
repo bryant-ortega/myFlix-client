@@ -5,8 +5,7 @@ import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import "./profile-view.scss";
 import Container from "react-bootstrap/Container";
 import UserInfo from "./user-info";
-import FavoriteMovies from "./favorite-movies";
-import UpdateUser from "./update-user";
+
 
 import { MovieCard } from "../movie-card/movie-card";
 
