@@ -63,14 +63,24 @@ export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
             },
-        }).then(response => {
-            if (response.ok) {
-                onLogout();
-            } else {
-                alert("something went wrong.");
-            }
-        });
+        })
+            .then(response => {
+                if (response.ok) {
+                    localStorage.clear();
+                    alert("Account successfully deleted");
+                    <Navigate to="/signup" />; // replace window reload with navigate
+                } else {
+                    alert("Deletion failed!");
+                    window.location.reload();
+                }
+            })
+            .catch(e => {
+                alert("Something went wrong");
+                window.location.reload();
+                console.log(e);
+            });
     };
 
     return (
@@ -80,7 +90,7 @@ export const ProfileView = ({ user, token, setUser, movies, onLogout }) => {
                 <Col xs={12} sm={4}>
                     <Card>
                         <Card.Body>
-                            <UserInfo name={user.Username} email={user.Email} />
+                            <UserInfo name={user.Username} email={user.Email} birthday={user.Birthday} handleDeleteUser={handleDeleteUser}/>
                         </Card.Body>
                     </Card>
                 </Col>
