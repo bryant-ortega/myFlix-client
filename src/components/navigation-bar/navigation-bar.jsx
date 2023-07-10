@@ -1,8 +1,13 @@
+import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
-  
+export const NavigationBar = ({
+    user,
+    onLoggedOut,
+    searchQuery, 
+    setSearchQuery
+}) => {
     return (
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container>
@@ -28,11 +33,20 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                                     Movies
                                 </Nav.Link>
                                 <Nav.Link as={Link} to="/users">
-                                    My Profile
+                                    Profile
                                 </Nav.Link>
                                 <Nav.Link onClick={onLoggedOut}>
                                     Logout
                                 </Nav.Link>
+                                <input
+                                    type="text"
+                                    placeholder="Search by title or genre"
+                                    value={searchQuery}
+                                    onChange={e =>
+                                        setSearchQuery(e.target.value)
+                                    }
+                                    className="form-control search-bar"
+                                />
                             </>
                         )}
                     </Nav>
